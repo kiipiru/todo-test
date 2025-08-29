@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'SF Compact';
+    src: url('./assets/fonts/SFCompactDisplay-Ultralight.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
