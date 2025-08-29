@@ -70,5 +70,3 @@ npm run build
 ## 📄 Лицензия
 
 MIT
-
-© Claude 4 Sonnet
