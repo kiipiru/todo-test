@@ -3,6 +3,11 @@
   padding: 2px 4px;
 }
 
+.button:hover {
+    color: #666;
+    transition: color 0.25s ease;
+}
+
 .buttonSelected {
     border: 0.5px solid #E7D9D9;
     border-radius: 0%;
