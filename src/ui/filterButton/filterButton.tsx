@@ -5,14 +5,16 @@ type FilterButtonProps = {
   title: string;
   selected: boolean;
   onClick: () => void;
-  className: string
+  className: string;
+  disabled: boolean
 };
 
 export const FilterButton: FC<FilterButtonProps> = ({
   title,
   selected,
   onClick,
-  className
+  className,
+  disabled
 }) => {
-  return <button onClick={onClick} className={`${selected ? styles.buttonSelected : ''} ${styles.button} ${className}`}>{title}</button>;
+  return <button disabled={disabled} onClick={onClick} className={`${selected ? styles.buttonSelected : ''} ${styles.button} ${className}`}>{title}</button>;
 };

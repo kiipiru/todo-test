@@ -50,7 +50,7 @@ body {
   border: 1.5px solid #f2f2f2;
   border-radius: 50%;
   height: 13.5px;
-  width: 13.5px;
+  min-width: 13.5px;
   padding: 0;
 }
 
@@ -149,7 +149,6 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: 4px 0px;
   border-bottom: 0.5px solid #e6e6e6;
   gap: 4px;
   align-items: center;
@@ -160,6 +159,11 @@ body {
   color: #4d4d4d;
   font-size: 20px;
   transition: 0.25s ease;
+  text-align: start;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  padding: 4px 0px;
 }
 
 .todo_item_name_done {

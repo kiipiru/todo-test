@@ -7,20 +7,15 @@ export const todosReducer: Reducer<TodosContextValue, TodosActions> = (
 ) => {
   let newState = { ...value };
   switch (action.type) {
-    case "COMPLETE":
+    case "TOGGLE":
       newState.todos = value.todos.map((todo) =>
-        todo.key === action.payload ? { ...todo, done: true } : todo
-      );
-      break;
-    case "UNCOMPLETE":
-      newState.todos = value.todos.map((todo) =>
-        todo.key === action.payload ? { ...todo, done: false } : todo
+        todo.key === action.payload ? { ...todo, done: !todo.done } : todo
       );
       break;
     case "ADDTODO":
       newState.todos = [
         ...value.todos,
-        { name: action.payload, done: false, key: Math.random() },
+        { name: action.payload, done: false, key: crypto.randomUUID() },
       ];
       break;
     case "CLEARTODOS":

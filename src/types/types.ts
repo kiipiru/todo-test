@@ -14,7 +14,7 @@ type Action<Type extends string, Payload = never> = IsNever<
 export type Todo = {
   name: string;
   done: boolean;
-  key: number;
+  key: string;
 };
 
 export type Filter = "All" | "Active" | "Completed";
@@ -26,8 +26,7 @@ export type TodosContextValue = {
 };
 
 export type TodosActions =
-  | Action<"COMPLETE", number>
-  | Action<"UNCOMPLETE", number>
+  | Action<"TOGGLE", string>
   | Action<"ADDTODO", string>
   | Action<"CLEARTODOS">
   | Action<"SETFILTER", Filter>;
