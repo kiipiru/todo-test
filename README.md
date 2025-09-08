@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React приложение для управления задачами с использованием Context API и useReducer для управления состоянием.
 
-Currently, two official plugins are available:
+## ✨ Функционал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Добавление и управление задачами
+- 🔄 Отметка задач как выполненных/невыполненных  
+- 🔍 Фильтрация задач по статусу (All/Active/Completed)
+- 🗑️ Удаление всех выполненных задач
+- 📊 Счетчик оставшихся задач
 
-## Expanding the ESLint configuration
+## 🏗️ Архитектурные решения
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Управление состоянием
+Проект использует Context API + useReducer вместо локальных useState хуков для централизованного управления состоянием приложения. Такой подход обеспечивает:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Предсказуемые изменения состояния через reducer
+- Централизованную бизнес-логику
+- Легкость тестирования и отладки
+- Масштабируемость при росте приложения
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Структура данных
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+interface Todo {
+  key: string;
+  name: string;
+  done: boolean;
+}
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+interface TodosContextValue {
+  todos: Todo[];
+  visibleTodos: Todo[];
+  filter: Filter;
+}
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Технологический стек
+
+- React с TypeScript
+- Context API для глобального состояния
+- useReducer для управления сложным состоянием
+- Vite как сборщик
+
+## 🚀 Быстрый старт
+
+
+# Установка зависимостей
+npm install
+
+# Запуск в режиме разработки
+npm run dev
+
+# Сборка для продакшена
+npm run build
+
+
+## 🎯 Основные компоненты
+
+### TodosReducer
+Централизованная логика для всех операций с задачами:
+- ADDTODO - добавление новой задачи
+- COMPLETE/UNCOMPLETE - изменение статуса
+- SETFILTER - фильтрация отображаемых задач  
+- CLEARTODOS - удаление выполненных задач
+
+### Context Provider
+Обеспечивает доступ к состоянию todos во всем приложении через React Context.
