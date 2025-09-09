@@ -1,0 +1,67 @@
+.buttonChevron {
+  transition: filter 0.25s;
+  background-image: url("../../assets/chevron.svg");
+  background-size: 12px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 12px;
+  height: 14px;
+  padding: 6px 0 6px 0;
+  justify-self: center;
+  align-self: center;
+  box-sizing: content-box;
+}
+
+.buttonChevronInvalid {
+  filter: invert(46%) sepia(7%) saturate(1703%) hue-rotate(314deg)
+    brightness(103%) contrast(72%);
+}
+
+.inputContainer {
+  position: relative;
+  transition: 0.25s;
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  border: 0.5px solid transparent;
+  border-bottom-color: #e6e6e6;
+}
+
+.inputContainerInvalid {
+  background-color: #ffebeb;
+}
+
+.inputTodo {
+  color: #4d4d4d;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.inputPlaceholder {
+  transition: color 0.25s, opacity 0.25s;
+  position: absolute;
+  z-index: 2;
+  color: #e6e6e6;
+  font-size: 20px;
+  top: 4px;
+  left: 19px;
+  line-height: 100%;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.inputPlaceholderInvalid {
+  color: #9b7272;
+}
+
+.inputTodo:not(:placeholder-shown) + .inputPlaceholder,
+.inputTodo:focus + .inputPlaceholder {
+  opacity: 0;
+}
+
+.inputTodo:focus-visible {
+  outline: none;
+}

@@ -45,47 +45,8 @@ body {
   transition: color 0.25s;
 }
 
-.button_todo_item {
-  box-sizing: content-box;
-  border: 1.5px solid #f2f2f2;
-  border-radius: 50%;
-  height: 13.5px;
-  min-width: 13.5px;
-  padding: 0;
-}
-
-.button_todo_item:hover:not(.button_todo_item_active){
-  border-color: #ddd; 
-}
-
-.button_todo_item_active {
-  border-color: transparent;
-  background-image: url("./assets/todoChecked.svg");
-  background-size: 17px 17px;
-  background-position: center;
-}
-
 .button:hover {
   outline: none;
-}
-
-.button_chevron {
-  transition: filter 0.25s;
-  background-image: url("./assets/chevron.svg");
-  background-size: 12px 14px;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 12px;
-  height: 14px;
-  padding: 6px 0 6px 0;
-  justify-self: center;
-  align-self: center;
-  box-sizing: content-box;
-}
-
-.button_chevron_invalid {
-  filter: invert(46%) sepia(7%) saturate(1703%) hue-rotate(314deg)
-    brightness(103%) contrast(72%);
 }
 
 .todo_list {
@@ -94,81 +55,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.input_container {
-  position: relative;
-  transition: 0.25s;
-  width: 100%;
-  display: flex;
-  gap: 4px;
-  border: 0.5px solid transparent;
-  border-bottom-color: #e6e6e6;
-}
-
-.input_container_invalid {
-  background-color: #ffebeb;
-}
-
-.input_todo {
-  color: #4d4d4d;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  font-family: inherit;
-  width: 100%;
-}
-
-.input_placeholder {
-  transition: color 0.25s, opacity 0.25s;
-  position: absolute;
-  z-index: 2;
-  color: #e6e6e6;
-  font-size: 20px;
-  top: 4px;
-  left: 19px;
-  line-height: 100%;
-  opacity: 1;
-  pointer-events: none;
-}
-
-.input_placeholder_invalid {
-  color: #9b7272;
-}
-
-.input_todo:not(:placeholder-shown) + .input_placeholder,
-.input_todo:focus + .input_placeholder {
-  opacity: 0;
-}
-
-.input_todo:focus-visible {
-  outline: none;
-}
-
-.todo_item_container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  border-bottom: 0.5px solid #e6e6e6;
-  gap: 4px;
-  align-items: center;
-}
-
-.todo_item_name {
-  margin: 0;
-  color: #4d4d4d;
-  font-size: 20px;
-  transition: 0.25s ease;
-  text-align: start;
-  overflow-wrap: break-word;
-  overflow: hidden;
-  height: 100%;
-  padding: 4px 0px;
-}
-
-.todo_item_name_done {
-  text-decoration: line-through;
-  color: #e6e6e6;
 }
 
 .todo_params_bar {

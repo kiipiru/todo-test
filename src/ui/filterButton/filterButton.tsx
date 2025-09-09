@@ -1,12 +1,12 @@
 import type { FC } from "react";
-import styles from './filterButton.module.css'
+import styles from "./filterButton.module.css";
 
 type FilterButtonProps = {
   title: string;
   selected: boolean;
   onClick: () => void;
-  className: string;
-  disabled: boolean
+  className?: string;
+  disabled: boolean;
 };
 
 export const FilterButton: FC<FilterButtonProps> = ({
@@ -14,7 +14,17 @@ export const FilterButton: FC<FilterButtonProps> = ({
   selected,
   onClick,
   className,
-  disabled
+  disabled,
 }) => {
-  return <button disabled={disabled} onClick={onClick} className={`${selected ? styles.buttonSelected : ''} ${styles.button} ${className}`}>{title}</button>;
+  return (
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={`button button_filter ${
+        selected ? styles.buttonSelected : ""
+      } ${styles.button} ${className}`}
+    >
+      {title}
+    </button>
+  );
 };

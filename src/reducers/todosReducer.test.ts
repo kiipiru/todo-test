@@ -4,9 +4,9 @@ import type { TodosContextValue, TodosActions } from "../types/types";
 
 const initialState: TodosContextValue = {
   todos: [
-    { key: 1, name: "Test todo 1", done: false },
-    { key: 2, name: "Test todo 2", done: true },
-    { key: 3, name: "Test todo 3", done: false },
+    { key: "1", name: "Test todo 1", done: false },
+    { key: "2", name: "Test todo 2", done: true },
+    { key: "3", name: "Test todo 3", done: false },
   ],
   visibleTodos: [],
   filter: "All",
@@ -19,33 +19,23 @@ const FILTERS = {
 } as const;
 
 describe("проверка работы todosReducer", () => {
-  describe("проверка экшена COMPLETE", () => {
-    it('проверяем отметку "выполнено" у дела в списке', () => {
-      const action: TodosActions = { type: "COMPLETE", payload: 1 };
+  describe("проверка экшена TOGGLE", () => {
+    it('проверяем переключение "done" у дела в списке', () => {
+      const action: TodosActions = { type: "TOGGLE", payload: "1" };
       const result = todosReducer(initialState, action);
 
-      expect(result.todos.find((todo) => todo.key === 1)?.done).toBe(true);
-      expect(result.todos.find((todo) => todo.key === 2)?.done).toBe(true);
-      expect(result.todos.find((todo) => todo.key === 3)?.done).toBe(false);
+      expect(result.todos.find((todo) => todo.key === "1")?.done).toBe(true);
+      expect(result.todos.find((todo) => todo.key === "2")?.done).toBe(true);
+      expect(result.todos.find((todo) => todo.key === "3")?.done).toBe(false);
     });
 
     it("проверяем обновление видимых дел в списке при фильтре Active", () => {
       const stateWithActiveFilter = { ...initialState, filter: FILTERS.ACTIVE };
-      const action: TodosActions = { type: "COMPLETE", payload: 1 };
+      const action: TodosActions = { type: "TOGGLE", payload: "1" };
       const result = todosReducer(stateWithActiveFilter, action);
 
       expect(result.visibleTodos).toHaveLength(1);
-      expect(result.visibleTodos[0].key).toBe(3);
-    });
-  });
-
-  describe("проверяем работу экшена UNCOMPLETE", () => {
-    it('проеряем отметку "невыполнено" у дела в списке', () => {
-      const action: TodosActions = { type: "UNCOMPLETE", payload: 2 };
-      const result = todosReducer(initialState, action);
-
-      expect(result.todos.find((todo) => todo.key === 2)?.done).toBe(false);
-      expect(result.todos.find((todo) => todo.key === 1)?.done).toBe(false);
+      expect(result.visibleTodos[0].key).toBe("3");
     });
   });
 
@@ -76,7 +66,7 @@ describe("проверка работы todosReducer", () => {
 
       expect(result.todos).toHaveLength(2);
       expect(result.todos.every((todo) => !todo.done)).toBe(true);
-      expect(result.todos.map((todo) => todo.key)).toEqual([1, 3]);
+      expect(result.todos.map((todo) => todo.key)).toEqual(["1", "3"]);
     });
   });
 
